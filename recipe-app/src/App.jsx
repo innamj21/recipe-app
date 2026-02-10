@@ -1,85 +1,31 @@
+import {  Routes, Route, Link} from "react-router-dom";
+
+import Home from "./pages/Home"; 
+import Recipes from "./pages/Recipes";
+import Upload from "./pages/Upload";
+import Conversion from "./pages/Conversion";
+import Bin from "./pages/Bin";
+
+
 function App() {
   return (
-    <div style={{ 
-      padding: "15px",
-      minHeight: "100vh",
-      position: "relative"}}>
+    <>
+      <nav>
+        <Link to="/">Home</Link> |{" "}
+        <Link to="/upload">Upload</Link> |{" "}
+        <Link to="/recipes">Recipes</Link> |{" "}
+        <Link to="/conversion">Conversion</Link> |{" "}
+        <Link to="/bin">Bin</Link> |{" "}
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/upload" element={<Upload />} />
+        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/conversion" element={<Conversion />} />
+        <Route path="/bin" element={<Bin />} />
+      </Routes>
+    </>
 
-      <h1>Hello User! </h1>
-    
-        
-  <div style={{ 
-    backgroundColor: "white",
-    padding: "60px",
-    display: "flex",
-    gridTemplateColumns: "repeat(2, 250px)",
-    justifyContent: "center",
-    borderRadius: "10px",
-    gap: "40px",
-    width: "70vw",
-    minHeight: "60vh",
-    alignItems: "center",
-    margin: "60px auto"     
-  }}>
-        <button style={{
-          display: "flex",
-          padding: "20px",
-          fontSize: "20px",
-          width: "250px",
-          height: "150px",
-          borderRadius: "10px",
-          cursor: "pointer",
-          alignItems: "center",
-          justifyContent: "center",
-          }}>
-        View Recipes
-        </button>
-        <button style={{
-          display: "flex",
-          padding: "20px",
-          fontSize: "20px",
-          width: "250px",
-          height: "150px",
-          borderRadius: "10px",
-          cursor: "pointer",
-          alignItems: "center",
-          justifyContent: "center",
-          }}>
-            Upload Recipe
-            </button>
-        <button style={{
-          display: "flex",
-          padding: "20px",
-          fontSize: "20px",
-          width: "250px",
-          height: "150px",
-          borderRadius: "10px",
-          cursor: "pointer",
-          alignItems: "center",
-          justifyContent: "center",
-          }}>
-            Conversion Tool
-            </button>
-        <button style={{
-          display: "flex",
-          padding: "20px",
-          fontSize: "20px",
-          width: "250px",
-          height: "150px",
-          borderRadius: "10px",
-          cursor: "pointer",
-          alignItems: "center",
-          justifyContent: "center",
-          }}>
-            Open Bin
-            </button>
-      </div>
-
-
-      <button style={{ position: "absolute", bottom: "20px", left: "20px" }}>
-        Log Out 
-      </button>
-    </div>
   );
 }
 
