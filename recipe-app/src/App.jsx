@@ -14,14 +14,12 @@ function App() {
         <Link to="/">Home</Link> |{" "}
         <Link to="/upload">Upload</Link> |{" "}
         <Link to="/recipes">Recipes</Link> |{" "}
-        <Link to="/conversion">Conversion</Link> |{" "}
         <Link to="/bin">Bin</Link> |{" "}
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/recipes" element={<Recipes />} />
-        <Route path="/conversion" element={<Conversion />} />
         <Route path="/bin" element={<Bin />} />
       </Routes>
     </>
