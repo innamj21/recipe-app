@@ -1,18 +1,92 @@
 import { Link } from "react-router-dom"; 
 import { useState } from "react";
+import jarImg from "../assets/jar.png";
+import cakeImg from "../assets/cake1.png";
+import potsImg from "../assets/potsnpans.png";
 
 function Home(){
     const [showConversion, setShowConversion] = useState(false)
     const [isUploadOpen, setIsUploadOpen] = useState(false);
     const [uploadModal, setUploadModal] = useState (null);
     const [hoveredCard, setHoveredCard] = useState(null);
+    const linkStyle = { 
+      textDecoration: "none", 
+      color: "inherit",
+      display: "block"
+    };
+
+    const cardStyle = {
+        display: "flex", 
+        flexDirection: "column", 
+        alignItems: "center", 
+        gap: "20px",
+        padding: "20px", 
+        borderRadius: "15px", 
+        backgroundColor: "#fdf4ed", 
+        boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+        transition: "transform 0.25s ease, box-shadow 0.25s ease",
+        cursor: "pointer" 
+      };
+
+    const circleStyle = {
+      position: "absolute",
+      width: "240px",
+      height: "240px",
+      borderRadius: "50%",
+      backgroundColor: "#efe2d6",
+      opacity: 0.6,
+      top: "52%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      filter: "blur(1px)",
+      zIndex: 0
+    };
+
+    const buttonStyle = {
+      color: "#fdf4ed",
+      border: "none",
+      padding: "12px 18px",
+      borderRadius: "10px",
+      fontWeight: "500",
+      cursor: "pointer"
+    };
+
+    const imageBoxStyle = {
+      height: "240px",
+      width: "100%",
+      borderRadius: "14px",
+      backgroundColor: "#fdf4ed",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      overflow: "hidden",
+      position: "relative"
+    };
+
+    const imgStyle = {
+      maxWidth: "85%",
+      maxHeight: "85%",
+      objectFit: "contain",
+      display: "block",
+      transform:  "translateY(-6px)",
+      position: "relative",
+      zIndex:1
+    };
+
+    const primaryImgStyle = {
+      ...imgStyle,
+      maxWidth: "92%",
+      maxHeight: "92%"
+    }
+      
 
     return (
     <div style={{
       minHeight: "100vh",
       position: "relative",
       backgroundColor: "#fdf4ed"}}>
-        
+
+
          <div style={{
           display: "flex",
           justifyContent: "space-between",
@@ -22,82 +96,118 @@ function Home(){
           height: "65px",
         }}>
           <div style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              padding: "15px 30px",
-              fontSize: "14px", 
-          }}>Logo/app name</div>
+
+              fontSize: "18px", 
+              fontWeight: "600",
+              color: "#fdf4ed"
+          }}>Thyme Cabinet</div>
           <button
           style={{
+            ...buttonStyle,
             backgroundColor: "#c57b57"
           }}>Log Out?</button>
         </div> 
+        <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          padding: "0 20px 80px"
+        }}>
+        
 
-        <div style={ {padding: "100px 20px", textAlign: "center"}}>
+        <div style={ {padding: "80px 0 40px", textAlign: "center"}}>
           <h1 style={{ fontSize: "35px", fontWeight: "600", color: "#303633", marginTop: "10px"}}>Hello User! whats cookin :3</h1>
+          <p
+          style={{
+            marginTop: "10px", fontSize: "16px", color: "#5a615c", marginBottom: 0 }}>
+              What would you like to do today?
+            </p>
         </div>
 
         {/*button cards*/ }
-    <div style={{
-      display: "flex", justifyContent: "center"
-    }}>
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(3, 300px)",
+          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
           gap: "40px",
-          paddingTop: "20px",
-          maxWidth: "1100px",
-          margin: "-20px auto 0",
-          paddingTop: "20px",
+          maxWidth: "980px",
+          padding:"0 24px",
+          width: "100%",
+          margin: "0 auto ",
           textAlign: "center", 
           }}>
-
+            <Link to="/recipes" style={linkStyle}>
             <div style={{ 
-              display: "flex", 
-              flexDirection: "column", 
-              alignItems: "center", 
-              gap: "20px",
-              padding: "20px", 
-              borderRadius: "15px", 
-              backgroundColor: "#fdf4ed", 
-              boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-              transition: "transform 0.25s ease, box-shadow 0.25s ease",
-              cursor: "pointer",
-              transform: hoveredCard === "recipes" ? "scale(1.05)" : "scale(1)"
+              ...cardStyle,
+              transform: hoveredCard === "recipes" ? "scale(1.03)" : "scale(1)"
             }}
             onMouseEnter={() => setHoveredCard("recipes")}
             onMouseLeave={() => setHoveredCard(null)}>
-              
-              <div style={{
-                height: "250px",
-                backgroundColor: "#ddd",
-                marginBottom: "20px"
-              }}> image goes here !!! 
+                <div style={imageBoxStyle}>
+                <div style={circleStyle}></div>
+                <img src={jarImg} alt="Recipe jar" style={imgStyle} />
               </div>
-               <Link to="/recipes">
-                  <button>View Recipes</button>
-               </Link>
+              <h2 style ={{
+                fontSize: "18px",
+                fontWeight: "600",
+                color: "#303633",
+                margin: 0
+              }}>View Recipes</h2>
+
+                  <button
+                  style={{
+                    backgroundColor: "#A1683A",
+                    ...buttonStyle
+                  }}>View Recipes</button>
             </div>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px"}}>
-              <div style={{
-                height: "250px",
-                backgroundColor: "#ddd",
-                marginBottom: "20px"
-              }}> image goes here !!! 
+            </Link>
+          <div style={{ 
+            ...cardStyle,
+            border: "2px solid #869d7a",
+            boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
+            transform: hoveredCard === "upload" ? "scale(1.03)" : "scale(1)"
+          }}
+          onMouseEnter={() => setHoveredCard("upload")}
+          onMouseLeave={() => setHoveredCard(null)}>
+              <div style={imageBoxStyle}>
+                <div style={circleStyle}></div>
+              <img src={cakeImg} alt="Recipe cake" style={imgStyle} />
               </div>
-                  <button onClick={() => setIsUploadOpen(true)}>Upload Recipe</button>
+              <h2 style ={{
+                fontSize: "18px",
+                fontWeight: "600",
+                color: "#303633",
+                margin: 0
+              }}>Upload Recipes</h2>
+                  <button 
+                  onClick={() => setIsUploadOpen(true)}
+                  style={{
+                    backgroundColor: "#869d7a",
+                    ...buttonStyle}}
+                    >Upload Recipe</button> 
 
             </div>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px"}}>
-              <div style={{
-                height: "250px",
-                backgroundColor: "#ddd",
-                marginBottom: "20px"
-              }}> image goes here !!! 
+          <div style={{ 
+            ...cardStyle,
+            transform: hoveredCard === "bin" ? "scale(1.03)" : "scale(1)"
+            }}
+            onMouseEnter={() => setHoveredCard("bin")}
+            onMouseLeave={() => setHoveredCard(null)}>
+              <div style={imageBoxStyle}>
+                <div style={circleStyle}></div>
+                <img src={potsImg} alt="Recipe bin" style={imgStyle} />
               </div>
-                <Link to="/bin">
-                  <button>Open Bin</button>
+              <h2 style ={{
+                fontSize: "18px",
+                fontWeight: "600",
+                color: "#303633",
+                margin: 0
+              }}>Open Bin</h2>
+                <Link to="/bin" style={linkStyle}>
+                  <button
+                    style={{
+                    backgroundColor: "#A1683A",
+                    ...buttonStyle}}>
+                      Open Bin</button>
                 </Link>
               </div>
             </div>
